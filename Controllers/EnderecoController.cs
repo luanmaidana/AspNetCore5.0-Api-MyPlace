@@ -95,6 +95,7 @@ namespace MyPlace.Controllers
                  if(endereco == null) return NotFound();
                  if(!ModelState.IsValid) return BadRequest();
                  await _enderecoRepository.Remover(id);
+                 await _enderecoRepository.SaveChanges();
                  return Ok();
             }
             catch (Exception e)

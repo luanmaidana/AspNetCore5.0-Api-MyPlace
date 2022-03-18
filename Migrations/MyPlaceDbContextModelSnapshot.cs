@@ -116,8 +116,8 @@ namespace MyPlace.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(200)");
 
-                    b.Property<decimal>("valor")
-                        .HasColumnType("numeric");
+                    b.Property<double>("valor")
+                        .HasColumnType("double precision");
 
                     b.HasKey("id");
 
@@ -131,7 +131,6 @@ namespace MyPlace.Migrations
                     b.HasOne("MyPlace.Negocios.Fornecedor", "fornecedor")
                         .WithOne("endereco")
                         .HasForeignKey("MyPlace.Negocios.Endereco", "fornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("fornecedor");
@@ -142,7 +141,6 @@ namespace MyPlace.Migrations
                     b.HasOne("MyPlace.Negocios.Fornecedor", "fornecedor")
                         .WithMany("produtos")
                         .HasForeignKey("fornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("fornecedor");

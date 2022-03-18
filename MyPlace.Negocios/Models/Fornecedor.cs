@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace MyPlace.Negocios
 {
+    [JsonObject(IsReference = true)] 
     public class Fornecedor : Entity{
         public string nome { get; set; }
         public string documento { get; set; }

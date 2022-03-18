@@ -11,7 +11,7 @@ namespace MyPlace.Negocios
         public string img { get; set; }
         public DateTime dataCadastro { get; set; }
         public bool ativo { get; set; }
-        public decimal valor { get; set; }
+        public double valor { get; set; }
 
         /*EF Relacionamento*/
 

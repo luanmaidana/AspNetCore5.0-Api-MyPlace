@@ -20,14 +20,12 @@ namespace MyPlace.Data
 
             // 1:1 => fornecedor : endereco
             builder.HasOne(f => f.endereco)
-              .WithOne(e => e.fornecedor)
-              .OnDelete(DeleteBehavior.Cascade);
+              .WithOne(e => e.fornecedor);
 
             // 1 : N => fornecedor : produtos
             builder.HasMany(f => f.produtos)
               .WithOne(p => p.fornecedor)
-              .HasForeignKey(p => p.fornecedorId)
-              .OnDelete(DeleteBehavior.Cascade);
+              .HasForeignKey(p => p.fornecedorId);
 
             builder.ToTable("fornecedores");
         }

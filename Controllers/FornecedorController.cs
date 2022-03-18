@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MyPlace.Negocios;
 using MyPlace.ViewModels;
+using Newtonsoft.Json;
 
 namespace MyPlace.Controllers
 {
@@ -34,7 +36,7 @@ namespace MyPlace.Controllers
         [Route("fornecedores/{id:guid}")]
         public async Task<ActionResult<FornecedorViewModel>> GetFornecedorId(Guid id){
 
-            var fornecedor = mapper.Map<FornecedorViewModel>(await fornecedorRepository.ObterFornecedorProdutosEndereco(id));
+             var fornecedor = mapper.Map<FornecedorViewModel>(await fornecedorRepository.ObterFornecedorProdutosEndereco(id));
             if(fornecedor == null) return NotFound();
             return Ok(fornecedor);
         }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using Microsoft.AspNetCore.Http;
 
 namespace MyPlace.ViewModels
@@ -25,7 +26,7 @@ namespace MyPlace.ViewModels
         [DisplayName("Ativo?")]
         public bool ativo { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public decimal valor { get; set; }    
+        public double valor { get; set; }    
         public Guid fornecedorId { get; set; }
 
         public string nomeFornecedor { get; set; }

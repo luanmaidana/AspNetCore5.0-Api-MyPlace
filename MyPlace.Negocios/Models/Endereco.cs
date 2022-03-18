@@ -1,8 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace MyPlace.Negocios
 {
+    [JsonObject(IsReference = true)] 
     public class Endereco : Entity{
 
         public Guid fornecedorId { get; set; }

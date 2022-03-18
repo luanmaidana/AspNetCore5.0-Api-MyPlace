@@ -19,13 +19,13 @@ namespace MyPlace.Data
             this.dbSet = db.Set<TEntity>();
         }
 
-        public async Task Adicionar(TEntity obj)
+        public virtual async Task Adicionar(TEntity obj)
         {
             dbSet.Add(obj);
             await SaveChanges();
         }
 
-        public async Task Atualizar(TEntity obj)
+        public virtual async Task Atualizar(TEntity obj)
         {
             dbSet.Update(obj);
             await SaveChanges();
@@ -43,20 +43,22 @@ namespace MyPlace.Data
             db?.Dispose();
         }
 
-        public async Task<TEntity> ObterPorId(Guid id)
+        public virtual async Task<TEntity> ObterPorId(Guid id)
         {
             return await dbSet.FindAsync(id);
         }
 
-        public async Task<List<TEntity>> ObterTodos()
+        public virtual async Task<List<TEntity>> ObterTodos()
         {
             return await dbSet.ToListAsync();
         }
 
-        public async Task Remover(Guid Id)
+        public virtual async Task Remover(Guid id)
         {
-            dbSet.Remove(new TEntity{id = Id});
-            await SaveChanges();
+            TEntity tentity = new TEntity{id = id};
+
+            dbSet.Remove(tentity);
+            await db.SaveChangesAsync();
         }
 
         public async Task<int> SaveChanges()

@@ -133,19 +133,25 @@ namespace MyPlace.Controllers
         [Route("produtos/{id:guid}")]
         public async Task<ActionResult<ProdutoViewModel>> DeleteProduto(Guid id){
 
-            var produto = await GetProdutoId(id);
+             var produto = await produtoRepository.Buscar(x => x.id == id);
+             
+            if(produto == null) {
+
+                Console.WriteLine(produto);
+                return NotFound("Produto não encontrado!");
+            }
             
             try
             {
-                 if(produto == null) return NotFound();
                  await produtoRepository.Remover(id);
-
-                 return Ok();
+                 Console.WriteLine(produto);
+                 return Ok("Produto deletado com sucesso!");
+                 
             }
             catch (Exception e)
             {
-                
-                return BadRequest(e.ToString());
+                return BadRequest(e.ToString() + "\n" + "Produto nao encontrado!");
+
             }
 
             
