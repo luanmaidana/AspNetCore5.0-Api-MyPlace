@@ -11,7 +11,7 @@ namespace MyPlace.Controllers
 {
     [ApiController]
     [Route("v1")]
-    public class EnderecoController : ControllerBase{
+    public class EnderecoController : MainController{
 
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IMapper mapper;

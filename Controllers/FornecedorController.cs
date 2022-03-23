@@ -12,7 +12,7 @@ namespace MyPlace.Controllers
 {
     [ApiController]
     [Route("v1")]
-    public class FornecedorController : ControllerBase{
+    public class FornecedorController : MainController{
 
         private readonly IFornecedorRepository fornecedorRepository;
         private readonly IMapper mapper;

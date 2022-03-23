@@ -37,9 +37,12 @@ namespace MyPlace
             services.AddDbContext<MyPlaceDbContext>(options =>
                 options.UseNpgsql(connectionString: "Host=localhost;Port=5432;Pooling=true;Database=MyPlace;User Id=postgres;Password=root;"));
 
+            services.AddDbContext<MyPlaceIdentityDbContext>(options =>
+                options.UseNpgsql(connectionString: "Host=localhost;Port=5432;Pooling=true;Database=MyPlace;User Id=postgres;Password=root;"));    
+
             services.AddDefaultIdentity<IdentityUser>()
                     .AddRoles<IdentityRole>()
-                    .AddEntityFrameworkStores<MyPlaceDbContext>()
+                    .AddEntityFrameworkStores<MyPlaceIdentityDbContext>()
                     .AddDefaultTokenProviders();
 
             // JWT configuração

@@ -13,7 +13,7 @@ namespace MyPlace.Controllers
 {
     [ApiController]
     [Route("v1")]
-    public class ProdutoController : ControllerBase{
+    public class ProdutoController : MainController{
 
         private readonly IProdutoRepository produtoRepository;
         private readonly IMapper mapper;
